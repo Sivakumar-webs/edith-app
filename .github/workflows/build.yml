@@ -27,7 +27,7 @@ jobs:
       - name: Install buildozer and cython
         run: |
           pip install --upgrade pip
-          pip install buildozer cython==0.29.33
+          pip install buildozer cython
 
       - name: Build APK with Buildozer
         run: |
