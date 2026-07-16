@@ -8,7 +8,7 @@ source.include_exts = py,png,jpg,kv,atlas
 
 version = 1.0
 
-requirements = python3,kivy==2.3.0,pyjnius,android
+requirements = python3,kivy,pyjnius,android
 
 orientation = portrait
 fullscreen = 0
@@ -29,6 +29,15 @@ android.accept_sdk_license = True
 android.archs = arm64-v8a, armeabi-v7a
 
 android.wakelock = False
+
+# ---- Pin python-for-android to the last stable, officially released
+# version (Jan 2024). This predates Python 3.14 entirely, which avoids a
+# currently OPEN, unresolved upstream bug where p4a's newest code tries
+# to build against Python 3.14 and breaks Kivy's compiled C extensions
+# (see: github.com/kivy/python-for-android issue #3274). Pinning here is
+# what actually fixes the build -- not a workaround in our own code.
+p4a.branch = master
+p4a.commit = v2024.01.21
 
 [buildozer]
 log_level = 2
